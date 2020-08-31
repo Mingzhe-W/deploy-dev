@@ -35,7 +35,7 @@ src/wt_data_manager:
 src/wt_home_dir:
 	git clone https://github.com/whole-tale/wt_home_dirs src/wt_home_dir
 
-src/dashboard_old:
+src/dashboard:
 	git clone https://github.com/whole-tale/dashboard src/dashboard
 	docker run --rm -ti -v $${PWD}/src/dashboard:/usr/src/node-app -w /usr/src/node-app node:carbon-slim sh -c "$$(cat dashboard_local/initial_build.sh)"
 
@@ -82,7 +82,7 @@ restart_girder:
                                 --basic --user admin:arglebargle123 \
                                         | jq -r .authToken.token)"
 
-	
+
 rebuild_dashboard_old: src/dashboard
 	sed -e "s|apiHOST|https://girder.local.wholetale.org|g" \
 		-e "s|dashboardHOST|https://dashboard.local.wholetale.org|g" \

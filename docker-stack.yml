@@ -72,7 +72,7 @@ services:
         - "traefik.enable=false"
 
   dashboard_old:
-    image: wholetale/dashboardproxy:latest
+    image: wholetale/dashboard:latest
     # build: ./dashboard_local
     networks:
       - traefik-net
@@ -81,13 +81,12 @@ services:
       - AUTH_PROVIDER=Globus
       - DATAONE_URL=https://cn-stage-2.test.dataone.org
       - DASHBOARD_DEV=true
-    volumes:
-      - ./src/dashboard/dist:/srv/dashboard
+
     deploy:
       replicas: 1
       labels:
         - "traefik.port=80"
-        - "traefik.frontend.rule=Host:legacy.local.wholetale.org"
+        - "traefik.frontend.rule=Host:dashboard.local.wholetale.org"
         - "traefik.enable=true"
         - "traefik.docker.network=wt_traefik-net"
         - "traefik.frontend.passHostHeader=true"
@@ -106,7 +105,7 @@ services:
       replicas: 1
       labels:
         - "traefik.port=80"
-        - "traefik.frontend.rule=Host:dashboard.local.wholetale.org"
+        - "traefik.frontend.rule=Host:dashboard-new.local.wholetale.org"
         - "traefik.enable=true"
         - "traefik.docker.network=wt_traefik-net"
         - "traefik.frontend.passHostHeader=true"

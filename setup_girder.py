@@ -120,7 +120,18 @@ settings = [
         "key": "oauth.orcid_client_secret",
         "value": os.environ.get("ORCID_CLIENT_SECRET"),
     },
-    {"key": "oauth.providers_enabled", "value": ["globus"]},
+    #Deriva key and secret pair
+    {"key": "oauth.providers_enabled", "value": ["globus","deriva"]},
+
+
+    {"key": "oauth.deriva_client_id", "value": os.environ.get("DERIVA_CLIENT_ID")},
+    {
+        "key": "oauth.deriva_client_secret",
+        "value": os.environ.get("DERIVA_CLIENT_SECRET"),
+    },
+
+
+
     {"key": "dm.globus_gc_dir", "value": "/opt/globusconnectpersonal"},
     {
         "key": "wholetale.dataverse_extra_hosts",
